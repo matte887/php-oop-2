@@ -27,14 +27,43 @@ class Utente {
         if($this -> registrato) {
             $_totale = $_totale * 0.8;
         }
-        echo "Totale " . $_totale  . " €";
+        return "Totale " . $_totale  . " €";
     }
 
     public function validaPagamento() {
         if ($this -> scadenza_carta > 2022) {
-            echo "Pagamento effettuato!";
+            return "Pagamento effettuato!";
         } else {
-            echo "La tua carta di credito è scaduta, prova con un'altra.";
+            return "La tua carta di credito è scaduta, prova con un'altra.";
         }
     }
+
+    public function ritornaCarrello() {
+        foreach ($this->carrello as $item) { ?>
+            <li><?php echo $item ->nome ?></li>
+        <?php } 
+    }
+
+    public function isRegistered() {
+        if($this->registrato) {
+            echo "Sì";
+        } else {
+            echo "No";
+        }
+    }
+
+    public function stampaUtente() { ?>
+        <h4><?php echo $this -> nome; ?></h4>
+        <ul>
+            <li><?php echo $this -> email; ?></li>
+            <li>Carrello:
+                <ul>
+                    <?php $this->ritornaCarrello(); ?>
+                </ul>
+            </li>
+            <li>Registrato: <?php $this->isRegistered(); ?></li>
+            <li><?php echo $this->ottieniTotale(); ?></li>
+            <li><?php echo $this->validaPagamento(); ?></li>
+        </ul>
+    <?php }
 }
