@@ -30,8 +30,12 @@ class Utente {
         return "Totale " . $_totale  . " €";
     }
 
+    public function getCurrentDate() {
+        return date("m-Y");
+    }
+
     public function validaPagamento() {
-        if ($this -> scadenza_carta > 2022) {
+        if ($this -> scadenza_carta >= $this->getCurrentDate()) {
             return "Pagamento effettuato!";
         } else {
             return "La tua carta di credito è scaduta, prova con un'altra.";

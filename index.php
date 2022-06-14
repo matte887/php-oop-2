@@ -30,7 +30,7 @@ $gioco_gatti->specie_animale = "gatti";
 // FINE PRODOTTI
 
 // UTENTI
-$tizio = new Utente("tizio@gmail.com", true, 2025);
+$tizio = new Utente("tizio@gmail.com", true, "09-2025");
 $tizio->nome = "Tizio";
 $tizio->aggiungiAlCarrello($crocchette);
 $tizio->aggiungiAlCarrello($antipulci);
@@ -38,14 +38,14 @@ $tizio->ottieniTotale();
 $tizio->validaPagamento();
 // var_dump($tizio);
 
-$caio = new Utente("caio@gmail.com", false, 2023);
+$caio = new Utente("caio@gmail.com", false, "07-2022");
 $caio->nome = "Caio";
 $caio->aggiungiAlCarrello($crocchette);
 $caio->aggiungiAlCarrello($antipulci);
 $caio->ottieniTotale();
 $caio->validaPagamento();
 
-$sempronio = new Utente("sempronio@gmail.com", false, 2020);
+$sempronio = new Utente("sempronio@gmail.com", false, "02-2020");
 $sempronio->nome = "Sempronio";
 $sempronio->aggiungiAlCarrello($crocchette);
 $sempronio->aggiungiAlCarrello($gioco_gatti);
