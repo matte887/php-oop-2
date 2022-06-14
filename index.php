@@ -12,22 +12,25 @@ require_once __DIR__ . "/Giochi.php";
 require_once __DIR__ . "/Cura.php";
 require_once __DIR__ . "/Utente.php";
 
-$purina = new Cibo("Cat Chow", 41, "Per gatti");
-$purina -> peso_netto = 10;
-$purina -> gusto = "salmone";
-$purina -> descrizione = "Cat Chow Adult è un alimento secco per gatti adulti che contiene tutti i nutrienti essenziali di cui il tuo gatto ha bisogno per un'età adulta attiva e un benessere generale.";
-echo $purina -> prezzoPerKilo();
-// var_dump($purina);
+$crocchette = new Cibo("Cat Chow", 41, "gatti");
+$crocchette -> peso_netto = 10;
+$crocchette -> gusto = "salmone";
+$crocchette -> descrizione = "Cat Chow Adult è un alimento secco per gatti adulti che contiene tutti i nutrienti essenziali di cui il tuo gatto ha bisogno per un'età adulta attiva e un benessere generale.";
+// echo $crocchette -> prezzoPerKilo();
+var_dump($crocchette);
 
-$antipulci = new Cura("Seresto Collare Antipulci", 27, 1, "per cani");
-$antipulci -> descrizione = "Seresto Collare Antipulci per Cani è l'antiparassitario esterno a base di imidaclopris e flumentrina, che vi consentirà di proteggere il cane da pulci e zecche e dalle malattie che questi parassiti possono trasmettere.";
+$antipulci = new Cura("Derbe", 8, 0.3, "cani");
+$antipulci -> descrizione = "Sapone Detergente Naturale per Cani è stato realizzato con una base totalmente vegetale di olio di palma e olio di cocco ed è stata arricchito con olio di ricino, olio di germe di grano, argilla verde e zolfo per igienizzare il manto e renderlo pulito, morbido, lucido e profumato, senza compromettere la struttura del pelo.";
 // var_dump($antipulci);
 
-$tizio = new Utente("tizio@gmail.com", true);
-$tizio -> aggiungiAlCarrello($purina);
+$gioco_gatti = new Gioco();
+
+$tizio = new Utente("tizio@gmail.com", true, 2025);
+$tizio -> aggiungiAlCarrello($crocchette);
 $tizio -> aggiungiAlCarrello($antipulci);
 $tizio -> ottieniTotale();
-var_dump($tizio);
+$tizio -> validaPagamento();
+// var_dump($tizio);
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +42,14 @@ var_dump($tizio);
     <title>Document</title>
 </head>
 <body>
-    <!-- <?php echo $purina -> prezzoPerKilo(); ?> -->
+    <h1>Negozio prodotti per animali</h1>
+    <h2>Prodotti</h2>
+    <div>
+        <?php $crocchette -> stampaCaratt() ?>
+    </div>
+    <div>
+        <?php $antipulci -> stampaCaratt() ?>
+    </div>
+    <h2>Pannello utente</h2>
 </body>
 </html>

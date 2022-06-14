@@ -11,6 +11,19 @@ class Prodotto {
 
     public function prezzoPerKilo() {
         $prezzoKilo= $this -> prezzo / $this -> peso_netto;
-        return "$prezzoKilo €/kg";
+        return round($prezzoKilo, 2, PHP_ROUND_HALF_UP);
     }
+/*
+    public function stampaCaratt() { ?>
+        <h4><?php echo $this -> nome ?></h4>
+        <ul>
+            <li><?php  ?></li>
+            <li><?php  ?></li>
+            <li><?php  ?></li>
+            <li><?php  ?></li>
+            <li><?php  ?></li>
+            <li></li>
+        </ul>
+    <?php }
+    */
 }
