@@ -3,6 +3,7 @@ class Prodotto {
     public $nome;
     public $descrizione;
     public $prezzo;
+    public $disponibile = true;
 
     function __construct($_nome, $_prezzo) {
         $this -> nome = $_nome;

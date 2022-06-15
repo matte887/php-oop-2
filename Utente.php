@@ -14,7 +14,11 @@ class Utente {
     }
 
     public function aggiungiAlCarrello($_prodotto) {
-        $this -> carrello[] = $_prodotto;
+        if ($this->disponibile = true) {
+            $this -> carrello[] = $_prodotto;
+        } else {
+            echo "Questo prodotto non è disponibile";
+        }
     }
 
     public function ottieniTotale() {
@@ -31,11 +35,12 @@ class Utente {
     }
 
     public function getCurrentDate() {
-        return date("m-Y");
+        return new DateTime('midnight');
     }
-
+    
     public function validaPagamento() {
-        if ($this -> scadenza_carta >= $this->getCurrentDate()) {
+        $scadenza_formattata = \DateTime::createFromFormat("m/y", $this->scadenza_carta);
+        if ($this->getCurrentDate() < $scadenza_formattata ) {
             return "Pagamento effettuato!";
         } else {
             return "La tua carta di credito è scaduta, prova con un'altra.";
